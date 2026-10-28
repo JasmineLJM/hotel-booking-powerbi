@@ -194,6 +194,3 @@ python tools/generate_pbip.py --data-folder "C:\path\to\repo\data\model\"
 The code (`etl/`, `tools/`, DAX measures and report definition) is released under the [MIT License](LICENSE).
 The data in `data/` is excluded from that licence; see *Data source and usage* above.
 
-## Author
-
-Jiemin Liang, Concordia University
