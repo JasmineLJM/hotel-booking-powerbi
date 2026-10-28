@@ -176,12 +176,23 @@ To regenerate the model and report after changing measures or layout:
 python tools/generate_pbip.py --data-folder "C:\path\to\repo\data\model\"
 ```
 
-## Data source
+## Data source and usage
 
-Nuno Antonio, Ana de Almeida, Luis Nunes (2019). *Hotel booking demand datasets.* Data in Brief, 22, 41-49.
-[doi:10.1016/j.dib.2018.11.126](https://doi.org/10.1016/j.dib.2018.11.126). The data was anonymised by
-its authors. Some redistributed copies add synthetic name, e-mail, phone and card columns; those
-columns are removed here and are not part of this repository.
+- **Original dataset:** Nuno Antonio, Ana de Almeida, Luis Nunes (2019). *Hotel booking demand datasets.*
+  Data in Brief, 22, 41-49. [doi:10.1016/j.dib.2018.11.126](https://doi.org/10.1016/j.dib.2018.11.126).
+  The data was anonymised by its authors.
+- **Where this copy came from:** the course materials of the Udemy course *Python for Machine Learning &
+  Data Science Masterclass* (Pierian Data), which redistribute the dataset with added synthetic name,
+  e-mail, phone and card columns. Those synthetic columns are removed here and are not part of this
+  repository.
+- **Non-commercial use only.** This project and its data are shared for learning and portfolio purposes.
+  The data is not covered by this repository's code licence; do not use it commercially. For any other
+  use, go to the original publication above and follow its terms.
+
+## License
+
+The code (`etl/`, `tools/`, DAX measures and report definition) is released under the [MIT License](LICENSE).
+The data in `data/` is excluded from that licence; see *Data source and usage* above.
 
 ## Author
 
