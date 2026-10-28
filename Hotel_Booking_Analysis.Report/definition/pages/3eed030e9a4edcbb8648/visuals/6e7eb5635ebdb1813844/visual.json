@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6e7eb5635ebdb1813844",
+  "position": {
+    "x": 20,
+    "y": 50,
+    "z": 2000,
+    "height": 26,
+    "width": 640,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "How price and demand move through the year",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#5D6D7E"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

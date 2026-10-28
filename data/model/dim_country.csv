@@ -1,0 +1,178 @@
+country_code,country_name,continent,un_region,is_domestic,market
+ABW,Aruba,America,Caribbean,0,International
+AGO,Angola,Africa,Middle Africa,0,International
+AIA,Anguilla,America,Caribbean,0,International
+ALB,Albania,Europe,Southern Europe,0,International
+AND,Andorra,Europe,Southern Europe,0,International
+ARE,United Arab Emirates,Asia,Western Asia,0,International
+ARG,Argentina,America,South America,0,International
+ARM,Armenia,Asia,Western Asia,0,International
+ASM,American Samoa,Oceania,Polynesia,0,International
+ATA,Antarctica,Antarctica,Antarctica,0,International
+ATF,French Southern Territories,Africa,Eastern Africa,0,International
+AUS,Australia,Oceania,Australia and New Zealand,0,International
+AUT,Austria,Europe,Western Europe,0,International
+AZE,Azerbaijan,Asia,Western Asia,0,International
+BDI,Burundi,Africa,Eastern Africa,0,International
+BEL,Belgium,Europe,Western Europe,0,International
+BEN,Benin,Africa,Western Africa,0,International
+BFA,Burkina Faso,Africa,Western Africa,0,International
+BGD,Bangladesh,Asia,Southern Asia,0,International
+BGR,Bulgaria,Europe,Eastern Europe,0,International
+BHR,Bahrain,Asia,Western Asia,0,International
+BHS,Bahamas,America,Caribbean,0,International
+BIH,Bosnia and Herzegovina,Europe,Southern Europe,0,International
+BLR,Belarus,Europe,Eastern Europe,0,International
+BOL,Bolivia,America,South America,0,International
+BRA,Brazil,America,South America,0,International
+BRB,Barbados,America,Caribbean,0,International
+BWA,Botswana,Africa,Southern Africa,0,International
+CAF,Central African Republic,Africa,Middle Africa,0,International
+CHE,Switzerland,Europe,Western Europe,0,International
+CHL,Chile,America,South America,0,International
+CHN,China,Asia,Eastern Asia,0,International
+CIV,Côte d'Ivoire,Africa,Western Africa,0,International
+CMR,Cameroon,Africa,Middle Africa,0,International
+COL,Colombia,America,South America,0,International
+COM,Comoros,Africa,Eastern Africa,0,International
+CPV,Cabo Verde,Africa,Western Africa,0,International
+CRI,Costa Rica,America,Central America,0,International
+CUB,Cuba,America,Caribbean,0,International
+CYM,Cayman Islands,America,Caribbean,0,International
+CYP,Cyprus,Asia,Western Asia,0,International
+CZE,Czechia,Europe,Eastern Europe,0,International
+DEU,Germany,Europe,Western Europe,0,International
+DJI,Djibouti,Africa,Eastern Africa,0,International
+DMA,Dominica,America,Caribbean,0,International
+DNK,Denmark,Europe,Northern Europe,0,International
+DOM,Dominican Republic,America,Caribbean,0,International
+DZA,Algeria,Africa,Northern Africa,0,International
+ECU,Ecuador,America,South America,0,International
+EGY,Egypt,Africa,Northern Africa,0,International
+ESP,Spain,Europe,Southern Europe,0,International
+EST,Estonia,Europe,Northern Europe,0,International
+ETH,Ethiopia,Africa,Eastern Africa,0,International
+FIN,Finland,Europe,Northern Europe,0,International
+FJI,Fiji,Oceania,Melanesia,0,International
+FRA,France,Europe,Western Europe,0,International
+FRO,Faroe Islands,Europe,Northern Europe,0,International
+GAB,Gabon,Africa,Middle Africa,0,International
+GBR,United Kingdom,Europe,Northern Europe,0,International
+GEO,Georgia,Asia,Western Asia,0,International
+GGY,Guernsey,Europe,Northern Europe,0,International
+GHA,Ghana,Africa,Western Africa,0,International
+GIB,Gibraltar,Europe,Southern Europe,0,International
+GLP,Guadeloupe,America,Caribbean,0,International
+GNB,Guinea-Bissau,Africa,Western Africa,0,International
+GRC,Greece,Europe,Southern Europe,0,International
+GTM,Guatemala,America,Central America,0,International
+GUY,Guyana,America,South America,0,International
+HKG,Hong Kong,Asia,Eastern Asia,0,International
+HND,Honduras,America,Central America,0,International
+HRV,Croatia,Europe,Southern Europe,0,International
+HUN,Hungary,Europe,Eastern Europe,0,International
+IDN,Indonesia,Asia,South-eastern Asia,0,International
+IMN,Isle of Man,Europe,Northern Europe,0,International
+IND,India,Asia,Southern Asia,0,International
+IRL,Ireland,Europe,Northern Europe,0,International
+IRN,Iran,Asia,Southern Asia,0,International
+IRQ,Iraq,Asia,Western Asia,0,International
+ISL,Iceland,Europe,Northern Europe,0,International
+ISR,Israel,Asia,Western Asia,0,International
+ITA,Italy,Europe,Southern Europe,0,International
+JAM,Jamaica,America,Caribbean,0,International
+JEY,Jersey,Europe,Northern Europe,0,International
+JOR,Jordan,Asia,Western Asia,0,International
+JPN,Japan,Asia,Eastern Asia,0,International
+KAZ,Kazakhstan,Asia,Central Asia,0,International
+KEN,Kenya,Africa,Eastern Africa,0,International
+KHM,Cambodia,Asia,South-eastern Asia,0,International
+KIR,Kiribati,Oceania,Micronesia,0,International
+KNA,St. Kitts and Nevis,America,Caribbean,0,International
+KOR,South Korea,Asia,Eastern Asia,0,International
+KWT,Kuwait,Asia,Western Asia,0,International
+LAO,Laos,Asia,South-eastern Asia,0,International
+LBN,Lebanon,Asia,Western Asia,0,International
+LBY,Libya,Africa,Northern Africa,0,International
+LCA,St. Lucia,America,Caribbean,0,International
+LIE,Liechtenstein,Europe,Western Europe,0,International
+LKA,Sri Lanka,Asia,Southern Asia,0,International
+LTU,Lithuania,Europe,Northern Europe,0,International
+LUX,Luxembourg,Europe,Western Europe,0,International
+LVA,Latvia,Europe,Northern Europe,0,International
+MAC,Macau,Asia,Eastern Asia,0,International
+MAR,Morocco,Africa,Northern Africa,0,International
+MCO,Monaco,Europe,Western Europe,0,International
+MDG,Madagascar,Africa,Eastern Africa,0,International
+MDV,Maldives,Asia,Southern Asia,0,International
+MEX,Mexico,America,Central America,0,International
+MKD,North Macedonia,Europe,Southern Europe,0,International
+MLI,Mali,Africa,Western Africa,0,International
+MLT,Malta,Europe,Southern Europe,0,International
+MMR,Myanmar,Asia,South-eastern Asia,0,International
+MNE,Montenegro,Europe,Southern Europe,0,International
+MOZ,Mozambique,Africa,Eastern Africa,0,International
+MRT,Mauritania,Africa,Western Africa,0,International
+MUS,Mauritius,Africa,Eastern Africa,0,International
+MWI,Malawi,Africa,Eastern Africa,0,International
+MYS,Malaysia,Asia,South-eastern Asia,0,International
+MYT,Mayotte,Africa,Eastern Africa,0,International
+NAM,Namibia,Africa,Southern Africa,0,International
+NCL,New Caledonia,Oceania,Melanesia,0,International
+NGA,Nigeria,Africa,Western Africa,0,International
+NIC,Nicaragua,America,Central America,0,International
+NLD,Netherlands,Europe,Western Europe,0,International
+NOR,Norway,Europe,Northern Europe,0,International
+NPL,Nepal,Asia,Southern Asia,0,International
+NZL,New Zealand,Oceania,Australia and New Zealand,0,International
+OMN,Oman,Asia,Western Asia,0,International
+PAK,Pakistan,Asia,Southern Asia,0,International
+PAN,Panama,America,Central America,0,International
+PER,Peru,America,South America,0,International
+PHL,Philippines,Asia,South-eastern Asia,0,International
+PLW,Palau,Oceania,Micronesia,0,International
+POL,Poland,Europe,Eastern Europe,0,International
+PRI,Puerto Rico,America,Caribbean,0,International
+PRT,Portugal,Europe,Southern Europe,1,Domestic (Portugal)
+PRY,Paraguay,America,South America,0,International
+PYF,French Polynesia,Oceania,Polynesia,0,International
+QAT,Qatar,Asia,Western Asia,0,International
+ROU,Romania,Europe,Eastern Europe,0,International
+RUS,Russia,Europe,Eastern Europe,0,International
+RWA,Rwanda,Africa,Eastern Africa,0,International
+SAU,Saudi Arabia,Asia,Western Asia,0,International
+SDN,Sudan,Africa,Northern Africa,0,International
+SEN,Senegal,Africa,Western Africa,0,International
+SGP,Singapore,Asia,South-eastern Asia,0,International
+SLE,Sierra Leone,Africa,Western Africa,0,International
+SLV,El Salvador,America,Central America,0,International
+SMR,San Marino,Europe,Southern Europe,0,International
+SRB,Serbia,Europe,Southern Europe,0,International
+STP,Sao Tome and Principe,Africa,Middle Africa,0,International
+SUR,Suriname,America,South America,0,International
+SVK,Slovakia,Europe,Eastern Europe,0,International
+SVN,Slovenia,Europe,Southern Europe,0,International
+SWE,Sweden,Europe,Northern Europe,0,International
+SYC,Seychelles,Africa,Eastern Africa,0,International
+SYR,Syria,Asia,Western Asia,0,International
+TGO,Togo,Africa,Western Africa,0,International
+THA,Thailand,Asia,South-eastern Asia,0,International
+TJK,Tajikistan,Asia,Central Asia,0,International
+TLS,Timor-Leste,Asia,South-eastern Asia,0,International
+TUN,Tunisia,Africa,Northern Africa,0,International
+TUR,Türkiye,Asia,Western Asia,0,International
+TWN,Taiwan,Asia,Eastern Asia,0,International
+TZA,Tanzania,Africa,Eastern Africa,0,International
+UGA,Uganda,Africa,Eastern Africa,0,International
+UKR,Ukraine,Europe,Eastern Europe,0,International
+UMI,United States Minor Outlying Islands,Oceania,Micronesia,0,International
+URY,Uruguay,America,South America,0,International
+USA,United States,America,Northern America,0,International
+UZB,Uzbekistan,Asia,Central Asia,0,International
+VEN,Venezuela,America,South America,0,International
+VGB,British Virgin Islands,America,Caribbean,0,International
+VNM,Vietnam,Asia,South-eastern Asia,0,International
+ZAF,South Africa,Africa,Southern Africa,0,International
+ZMB,Zambia,Africa,Eastern Africa,0,International
+ZWE,Zimbabwe,Africa,Eastern Africa,0,International
+UNK,Unknown,Unknown,Unknown,0,Unknown

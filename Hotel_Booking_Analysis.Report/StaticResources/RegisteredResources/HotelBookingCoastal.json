@@ -1,0 +1,44 @@
+{
+  "name": "Hotel Booking - Coastal",
+  "dataColors": [
+    "#1F4E79",
+    "#2A9D8F",
+    "#E9A23B",
+    "#D1495B",
+    "#6C757D",
+    "#8AB6D6",
+    "#9BC53D",
+    "#5E548E"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1B2631",
+  "tableAccent": "#1F4E79",
+  "good": "#2A9D8F",
+  "neutral": "#E9A23B",
+  "bad": "#D1495B",
+  "maximum": "#1F4E79",
+  "center": "#8AB6D6",
+  "minimum": "#F1F6FA",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 14,
+      "color": "#1B2631"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#1B2631"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#41505E"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 28,
+      "color": "#1F4E79"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+relationship b50a5722-0c3b-5801-ac5b-19d00aa90845
+	fromColumn: fact_bookings.arrival_date
+	toColumn: dim_date.date
+
+relationship 331a64c6-1456-2d01-3fa8-371421f738f6
+	isActive: false
+	fromColumn: fact_bookings.booking_date
+	toColumn: dim_date.date
+
+relationship defb7f08-422d-d12f-a359-dc86faa43a12
+	isActive: false
+	fromColumn: fact_bookings.status_date
+	toColumn: dim_date.date
+
+relationship 63605276-36e7-75a4-7476-febfc45106a3
+	fromColumn: fact_bookings.hotel
+	toColumn: dim_hotel.hotel
+
+relationship 933cf78f-a2ba-28d1-4964-c93e169a5682
+	fromColumn: fact_bookings.country_code
+	toColumn: dim_country.country_code
+
+relationship 97161039-f21e-2e4e-825e-a17b0aee8f52
+	fromColumn: fact_bookings.meal_code
+	toColumn: dim_meal.meal_code
+
+relationship 87f6b53a-875a-fcac-aa30-91fe95f11ab8
+	fromColumn: fact_bookings.market_segment
+	toColumn: dim_market_segment.market_segment
+
+relationship e53844be-3b58-b38c-6f58-9dc183edefa8
+	fromColumn: fact_bookings.distribution_channel
+	toColumn: dim_distribution_channel.distribution_channel
+
+relationship 23fe1025-bce7-45e3-ad12-d73afc63fdf5
+	fromColumn: fact_bookings.customer_type
+	toColumn: dim_customer_type.customer_type
+
+relationship 8cfdadf6-688e-5941-9dbb-db6c8c06a060
+	fromColumn: fact_bookings.deposit_type
+	toColumn: dim_deposit_type.deposit_type
+

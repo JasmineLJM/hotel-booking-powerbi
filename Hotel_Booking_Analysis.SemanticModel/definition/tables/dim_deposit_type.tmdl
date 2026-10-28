@@ -1,0 +1,25 @@
+table dim_deposit_type
+	lineageTag: 0f98e5ca-ab25-4657-835e-4b691f98445c
+
+	column deposit_type
+		dataType: string
+		lineageTag: b8a9d8ac-4857-4889-86a9-7bdb2e849c74
+		summarizeBy: none
+		sourceColumn: deposit_type
+
+	column description
+		dataType: string
+		lineageTag: f7cda417-42f3-4553-bf3e-70de63170993
+		summarizeBy: none
+		sourceColumn: description
+
+	partition dim_deposit_type = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_deposit_type.csv"), [Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"deposit_type", type text}, {"description", type text}}, "en-US")
+				in
+				    Typed
+

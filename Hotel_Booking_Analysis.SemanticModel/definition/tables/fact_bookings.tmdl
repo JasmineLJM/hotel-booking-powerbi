@@ -1,0 +1,283 @@
+table fact_bookings
+	lineageTag: 82204aa9-1d90-47e4-9f18-424fb9e721b3
+
+	column booking_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2b137704-429c-4349-ae45-3a7997d194b1
+		summarizeBy: none
+		sourceColumn: booking_id
+
+	column hotel
+		dataType: string
+		isHidden
+		lineageTag: 0f8a838c-9e27-45e7-b170-c4d1466ebe0f
+		summarizeBy: none
+		sourceColumn: hotel
+
+	column booking_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: bc093f88-46e1-402e-847a-26f3c75cef52
+		summarizeBy: none
+		sourceColumn: booking_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column arrival_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: d969312f-3293-4c89-b995-26ca12bfae07
+		summarizeBy: none
+		sourceColumn: arrival_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column status_date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: d65def14-3ad2-466d-ab54-770397845d21
+		summarizeBy: none
+		sourceColumn: status_date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column lead_time_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 85cd21ab-c75f-4243-82f2-b747e794ccc4
+		summarizeBy: sum
+		sourceColumn: lead_time_days
+
+	column lead_time_bucket
+		dataType: string
+		lineageTag: 889c8aee-9d9c-4e66-a3a0-634a9db82a07
+		summarizeBy: none
+		sourceColumn: lead_time_bucket
+		sortByColumn: lead_time_bucket_order
+
+	column lead_time_bucket_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c4cc400d-d43c-493d-bf42-d377c6ce9155
+		summarizeBy: none
+		sourceColumn: lead_time_bucket_order
+
+	column weekend_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: 80b32e94-d2e6-4ebe-8c30-959dae1b1c36
+		summarizeBy: sum
+		sourceColumn: weekend_nights
+
+	column week_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: e55d6cd2-71ed-4d87-b24c-711195193036
+		summarizeBy: sum
+		sourceColumn: week_nights
+
+	column total_nights
+		dataType: int64
+		formatString: 0
+		lineageTag: 2b698760-f106-4486-91c8-253be19d493c
+		summarizeBy: sum
+		sourceColumn: total_nights
+
+	column adults
+		dataType: int64
+		formatString: 0
+		lineageTag: c2953265-fb8c-4097-9187-99251f25f47a
+		summarizeBy: sum
+		sourceColumn: adults
+
+	column children
+		dataType: int64
+		formatString: 0
+		lineageTag: 2698bbb2-1f1d-4ef1-bc55-3f88410a74bb
+		summarizeBy: sum
+		sourceColumn: children
+
+	column babies
+		dataType: int64
+		formatString: 0
+		lineageTag: 9842b78f-d55e-45ff-b72f-512da0f913ac
+		summarizeBy: sum
+		sourceColumn: babies
+
+	column total_guests
+		dataType: int64
+		formatString: 0
+		lineageTag: 48f76258-3ab5-474d-8746-fdc056ec7778
+		summarizeBy: sum
+		sourceColumn: total_guests
+
+	column meal_code
+		dataType: string
+		isHidden
+		lineageTag: 7a748a16-0dcc-45ec-ad93-223ba5af31f4
+		summarizeBy: none
+		sourceColumn: meal_code
+
+	column country_code
+		dataType: string
+		isHidden
+		lineageTag: 50008b71-99cb-47a2-aa8c-7007c79f85ef
+		summarizeBy: none
+		sourceColumn: country_code
+
+	column market_segment
+		dataType: string
+		isHidden
+		lineageTag: e9f0d513-a879-4ed5-98c8-a8c38609abd1
+		summarizeBy: none
+		sourceColumn: market_segment
+
+	column distribution_channel
+		dataType: string
+		isHidden
+		lineageTag: fb15c9ce-77bb-43e4-99fc-12ce2366b0fb
+		summarizeBy: none
+		sourceColumn: distribution_channel
+
+	column customer_type
+		dataType: string
+		isHidden
+		lineageTag: 3cd4fdbf-2d6e-48f3-ad3d-cc707b18d5db
+		summarizeBy: none
+		sourceColumn: customer_type
+
+	column deposit_type
+		dataType: string
+		isHidden
+		lineageTag: b8b2610b-cabe-442a-a7dd-d837b34a3a73
+		summarizeBy: none
+		sourceColumn: deposit_type
+
+	column is_repeated_guest
+		dataType: int64
+		formatString: 0
+		lineageTag: e21ca79f-2f49-4925-879d-b09371d2637f
+		summarizeBy: none
+		sourceColumn: is_repeated_guest
+
+	column guest_type
+		dataType: string
+		lineageTag: ea2b3b16-dcea-464d-8ef1-ccb8e235bbb8
+		summarizeBy: none
+		sourceColumn: guest_type
+
+	column previous_cancellations
+		dataType: int64
+		formatString: 0
+		lineageTag: bbe9d388-f7e9-4796-88b6-81c019249ebf
+		summarizeBy: sum
+		sourceColumn: previous_cancellations
+
+	column previous_bookings_not_canceled
+		dataType: int64
+		formatString: 0
+		lineageTag: c6dd4edf-bc4f-4cb8-812e-bf004acc2f84
+		summarizeBy: sum
+		sourceColumn: previous_bookings_not_canceled
+
+	column reserved_room_type
+		dataType: string
+		lineageTag: 7f65710d-ff6c-4cc9-9730-2b4374c76af8
+		summarizeBy: none
+		sourceColumn: reserved_room_type
+
+	column assigned_room_type
+		dataType: string
+		lineageTag: 2905abef-da47-448d-8e71-fd65fc681f21
+		summarizeBy: none
+		sourceColumn: assigned_room_type
+
+	column room_type_changed
+		dataType: int64
+		formatString: 0
+		lineageTag: b316bc74-33bf-4c1c-8f45-661137ff3aa5
+		summarizeBy: none
+		sourceColumn: room_type_changed
+
+	column booking_changes
+		dataType: int64
+		formatString: 0
+		lineageTag: 21405798-e874-4984-b9ac-b079012018f8
+		summarizeBy: sum
+		sourceColumn: booking_changes
+
+	column agent_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 458dc1bf-e36f-4962-9cd2-5e6e111a4579
+		summarizeBy: none
+		sourceColumn: agent_id
+
+	column company_id
+		dataType: int64
+		formatString: 0
+		lineageTag: fcba8aca-c679-4857-bab6-7de5922e0452
+		summarizeBy: none
+		sourceColumn: company_id
+
+	column days_in_waiting_list
+		dataType: int64
+		formatString: 0
+		lineageTag: 58171ba4-3356-4812-98d6-f81fd6e1be08
+		summarizeBy: sum
+		sourceColumn: days_in_waiting_list
+
+	column adr
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 1ecc64e0-0116-4b16-9245-45020225b51b
+		summarizeBy: sum
+		sourceColumn: adr
+
+	column required_car_parking_spaces
+		dataType: int64
+		formatString: 0
+		lineageTag: c6a112f2-0ce9-4e12-90b3-d02426e9a0af
+		summarizeBy: sum
+		sourceColumn: required_car_parking_spaces
+
+	column total_special_requests
+		dataType: int64
+		formatString: 0
+		lineageTag: f709faa0-609f-4957-ab84-6b0f0a1e4b98
+		summarizeBy: sum
+		sourceColumn: total_special_requests
+
+	column is_canceled
+		dataType: int64
+		formatString: 0
+		lineageTag: d6d7a1c8-e755-4323-8747-706279bbf477
+		summarizeBy: none
+		sourceColumn: is_canceled
+
+	column reservation_status
+		dataType: string
+		lineageTag: 3527aa16-252e-428d-a167-fed05b90695f
+		summarizeBy: none
+		sourceColumn: reservation_status
+
+	column booking_value
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 8ea6fc36-825b-4fb7-ab7a-a3b1ae80af15
+		summarizeBy: sum
+		sourceColumn: booking_value
+
+	partition fact_bookings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_bookings.csv"), [Delimiter=",", Columns=38, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"booking_id", Int64.Type}, {"hotel", type text}, {"booking_date", type date}, {"arrival_date", type date}, {"status_date", type date}, {"lead_time_days", Int64.Type}, {"lead_time_bucket", type text}, {"lead_time_bucket_order", Int64.Type}, {"weekend_nights", Int64.Type}, {"week_nights", Int64.Type}, {"total_nights", Int64.Type}, {"adults", Int64.Type}, {"children", Int64.Type}, {"babies", Int64.Type}, {"total_guests", Int64.Type}, {"meal_code", type text}, {"country_code", type text}, {"market_segment", type text}, {"distribution_channel", type text}, {"customer_type", type text}, {"deposit_type", type text}, {"is_repeated_guest", Int64.Type}, {"guest_type", type text}, {"previous_cancellations", Int64.Type}, {"previous_bookings_not_canceled", Int64.Type}, {"reserved_room_type", type text}, {"assigned_room_type", type text}, {"room_type_changed", Int64.Type}, {"booking_changes", Int64.Type}, {"agent_id", Int64.Type}, {"company_id", Int64.Type}, {"days_in_waiting_list", Int64.Type}, {"adr", type number}, {"required_car_parking_spaces", Int64.Type}, {"total_special_requests", Int64.Type}, {"is_canceled", Int64.Type}, {"reservation_status", type text}, {"booking_value", type number}}, "en-US")
+				in
+				    Typed
+

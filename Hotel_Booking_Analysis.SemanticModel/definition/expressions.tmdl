@@ -1,0 +1,5 @@
+expression DataFolder = "C:\Users\liang\OneDrive - Concordia University - Canada\Concordia\PowerBI-Hotel-Booking\data\model\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 612148b1-d834-471a-b88b-bb3215c51248
+
+	annotation PBI_ResultType = Text
+

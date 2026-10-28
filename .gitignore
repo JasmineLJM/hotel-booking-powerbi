@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+# Power BI local cache files (PBIP)
+**/.pbi/localSettings.json
+**/.pbi/cache.abf

@@ -1,0 +1,164 @@
+// =====================================================================
+// Hotel Booking Demand - DAX measures
+// Create a table called _Measures (Home > Enter data > empty table) and
+// add each measure below to it. Display folders are noted in comments.
+//
+// Revenue figures are ESTIMATED room revenue = ADR x nights, in EUR.
+// "Realized" = bookings that were not canceled.
+// =====================================================================
+
+
+// ---------- Folder: 1 Volume ----------
+
+Total Bookings =
+COUNTROWS ( fact_bookings )
+
+Realized Bookings =
+CALCULATE ( [Total Bookings], fact_bookings[is_canceled] = 0 )
+
+Canceled Bookings =
+CALCULATE ( [Total Bookings], fact_bookings[is_canceled] = 1 )
+
+Room Nights =
+CALCULATE ( SUM ( fact_bookings[total_nights] ), fact_bookings[is_canceled] = 0 )
+
+Total Guests =
+CALCULATE ( SUM ( fact_bookings[total_guests] ), fact_bookings[is_canceled] = 0 )
+
+
+// ---------- Folder: 2 Revenue ----------
+
+Room Revenue =
+CALCULATE ( SUM ( fact_bookings[booking_value] ), fact_bookings[is_canceled] = 0 )
+
+// Weighted ADR: revenue / room nights (not a plain average of the adr column)
+ADR =
+DIVIDE ( [Room Revenue], [Room Nights] )
+
+Lost Revenue (Cancellations) =
+CALCULATE ( SUM ( fact_bookings[booking_value] ), fact_bookings[is_canceled] = 1 )
+
+Lost Revenue % =
+DIVIDE ( [Lost Revenue (Cancellations)], [Room Revenue] + [Lost Revenue (Cancellations)] )
+
+
+// ---------- Folder: 3 Cancellations ----------
+
+Cancellation Rate =
+DIVIDE ( [Canceled Bookings], [Total Bookings] )
+
+No-Show Rate =
+DIVIDE (
+    CALCULATE ( [Total Bookings], fact_bookings[reservation_status] = "No-Show" ),
+    [Total Bookings]
+)
+
+// Cancellation rate across all bookings, ignoring every slicer except hotel.
+// Use as a reference line next to [Cancellation Rate].
+Cancellation Rate (Hotel Baseline) =
+CALCULATE ( [Cancellation Rate], ALLEXCEPT ( fact_bookings, dim_hotel[hotel] ) )
+
+Cancellation Rate vs Baseline =
+[Cancellation Rate] - [Cancellation Rate (Hotel Baseline)]
+
+
+// ---------- Folder: 4 Guest behaviour ----------
+
+Avg Lead Time (days) =
+AVERAGE ( fact_bookings[lead_time_days] )
+
+Avg Length of Stay (nights) =
+DIVIDE ( [Room Nights], [Realized Bookings] )
+
+Avg Guests per Booking =
+DIVIDE ( [Total Guests], [Realized Bookings] )
+
+Repeat Guest % =
+DIVIDE (
+    CALCULATE ( [Total Bookings], fact_bookings[is_repeated_guest] = 1 ),
+    [Total Bookings]
+)
+
+Room Change Rate =
+DIVIDE (
+    CALCULATE ( [Realized Bookings], fact_bookings[room_type_changed] = 1 ),
+    [Realized Bookings]
+)
+
+Avg Special Requests =
+AVERAGE ( fact_bookings[total_special_requests] )
+
+
+// ---------- Folder: 5 Alternate dates ----------
+// dim_date -> fact_bookings[arrival_date] is the active relationship.
+// booking_date and status_date have inactive relationships.
+
+Bookings by Booking Date =
+CALCULATE (
+    [Total Bookings],
+    USERELATIONSHIP ( fact_bookings[booking_date], dim_date[date] )
+)
+
+Cancellations by Cancel Date =
+CALCULATE (
+    [Canceled Bookings],
+    USERELATIONSHIP ( fact_bookings[status_date], dim_date[date] ),
+    fact_bookings[reservation_status] = "Canceled"
+)
+
+
+// ---------- Folder: 6 Time intelligence ----------
+// Arrivals cover Jul 2015 - Aug 2017, so calendar years are incomplete.
+// The "comparable" measures only use dates that have data in BOTH the
+// current and the previous year (Jul 2016 - Aug 2017), so YoY is fair.
+
+Room Revenue Rolling 3M =
+CALCULATE (
+    [Room Revenue],
+    DATESINPERIOD ( dim_date[date], MAX ( dim_date[date] ), -3, MONTH )
+)
+
+Room Revenue (Comparable) =
+VAR FirstData = CALCULATE ( MIN ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+VAR LastData  = CALCULATE ( MAX ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+VAR Periods =
+    FILTER (
+        VALUES ( dim_date[date] ),
+        dim_date[date] >= EDATE ( FirstData, 12 ) && dim_date[date] <= LastData
+    )
+RETURN
+    CALCULATE ( [Room Revenue], Periods )
+
+Room Revenue PY (Comparable) =
+VAR FirstData = CALCULATE ( MIN ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+VAR LastData  = CALCULATE ( MAX ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+VAR Periods =
+    FILTER (
+        VALUES ( dim_date[date] ),
+        dim_date[date] >= EDATE ( FirstData, 12 ) && dim_date[date] <= LastData
+    )
+RETURN
+    CALCULATE ( [Room Revenue], SAMEPERIODLASTYEAR ( Periods ) )
+
+Room Revenue YoY % =
+DIVIDE ( [Room Revenue (Comparable)] - [Room Revenue PY (Comparable)], [Room Revenue PY (Comparable)] )
+
+ADR PY =
+CALCULATE ( [ADR], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+
+Cancellation Rate PY =
+CALCULATE ( [Cancellation Rate], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+
+
+// ---------- Folder: 7 Labels ----------
+
+Selected Hotel Label =
+IF (
+    HASONEVALUE ( dim_hotel[hotel] ),
+    VALUES ( dim_hotel[hotel] ),
+    "Both hotels"
+)
+
+Report Subtitle =
+[Selected Hotel Label] & " | " & FORMAT ( [Total Bookings], "#,0" ) & " bookings | "
+    & FORMAT ( [Cancellation Rate], "0.0%" ) & " canceled"

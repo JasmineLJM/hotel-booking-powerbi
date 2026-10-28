@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["_Measures","fact_bookings","dim_date","dim_hotel","dim_country","dim_meal","dim_market_segment","dim_distribution_channel","dim_customer_type","dim_deposit_type","DataFolder"]
+
+ref table _Measures
+ref table fact_bookings
+ref table dim_date
+ref table dim_hotel
+ref table dim_country
+ref table dim_meal
+ref table dim_market_segment
+ref table dim_distribution_channel
+ref table dim_customer_type
+ref table dim_deposit_type
+
+ref cultureInfo en-US
+

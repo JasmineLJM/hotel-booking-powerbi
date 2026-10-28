@@ -1,0 +1,211 @@
+table _Measures
+	lineageTag: d6a5e5f4-6f60-458a-b90e-af4d8429b7e4
+
+	measure 'Total Bookings' = COUNTROWS ( fact_bookings )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: fb42e4a3-f79d-4003-97e3-8bebdc9468b3
+
+	measure 'Realized Bookings' = CALCULATE ( [Total Bookings], fact_bookings[is_canceled] = 0 )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 7c9f3278-022b-428a-b5c6-8cf8d951aec1
+
+	measure 'Canceled Bookings' = CALCULATE ( [Total Bookings], fact_bookings[is_canceled] = 1 )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 393eb8f1-c2ad-4d65-8fda-90d494809ff5
+
+	measure 'Room Nights' = CALCULATE ( SUM ( fact_bookings[total_nights] ), fact_bookings[is_canceled] = 0 )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 971dd902-3f2b-4db2-b87f-e3bddde7c2cb
+
+	measure 'Total Guests' = CALCULATE ( SUM ( fact_bookings[total_guests] ), fact_bookings[is_canceled] = 0 )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: fd3ad748-e864-45b7-84bc-06367bcde685
+
+	measure 'Room Revenue' = CALCULATE ( SUM ( fact_bookings[booking_value] ), fact_bookings[is_canceled] = 0 )
+		formatString: \€#,0
+		displayFolder: 2 Revenue
+		lineageTag: f0195cdb-9259-4363-bc21-469b9e1a4331
+
+	measure ADR = DIVIDE ( [Room Revenue], [Room Nights] )
+		formatString: \€#,0.00
+		displayFolder: 2 Revenue
+		lineageTag: f64054e3-1a87-4d56-8108-fcdcf64110c8
+
+	measure 'Lost Revenue (Cancellations)' = CALCULATE ( SUM ( fact_bookings[booking_value] ), fact_bookings[is_canceled] = 1 )
+		formatString: \€#,0
+		displayFolder: 2 Revenue
+		lineageTag: d023d82d-d390-449e-9bdb-169eba34358d
+
+	measure 'Lost Revenue %' = DIVIDE ( [Lost Revenue (Cancellations)], [Room Revenue] + [Lost Revenue (Cancellations)] )
+		formatString: 0.0%
+		displayFolder: 2 Revenue
+		lineageTag: 7970d2b1-e291-4e7c-a2a5-d366cb2c640d
+
+	measure 'Cancellation Rate' = DIVIDE ( [Canceled Bookings], [Total Bookings] )
+		formatString: 0.0%
+		displayFolder: 3 Cancellations
+		lineageTag: 8abb8f99-abb2-4681-bba9-2be85ad346b0
+
+	measure 'No-Show Rate' =
+			DIVIDE (
+			    CALCULATE ( [Total Bookings], fact_bookings[reservation_status] = "No-Show" ),
+			    [Total Bookings]
+			)
+		formatString: 0.0%
+		displayFolder: 3 Cancellations
+		lineageTag: 4084b17c-2d85-462f-b964-9fd7f9132f47
+
+	measure 'Cancellation Rate (Hotel Baseline)' = CALCULATE ( [Cancellation Rate], ALLEXCEPT ( fact_bookings, dim_hotel[hotel] ) )
+		formatString: 0.0%
+		displayFolder: 3 Cancellations
+		lineageTag: 6317a377-b534-4ccc-ab4f-13ff92f005fd
+
+	measure 'Cancellation Rate vs Baseline' = [Cancellation Rate] - [Cancellation Rate (Hotel Baseline)]
+		formatString: 0.0%
+		displayFolder: 3 Cancellations
+		lineageTag: 0bd920ca-c4ae-4abc-a026-fb3729163185
+
+	measure 'Avg Lead Time (days)' = AVERAGE ( fact_bookings[lead_time_days] )
+		formatString: #,0.0
+		displayFolder: 4 Guest behaviour
+		lineageTag: d4cb72f4-342a-41b8-85df-4cb80b309886
+
+	measure 'Avg Length of Stay (nights)' = DIVIDE ( [Room Nights], [Realized Bookings] )
+		formatString: #,0.0
+		displayFolder: 4 Guest behaviour
+		lineageTag: a068aa69-412b-497a-81ff-dd073fa4e195
+
+	measure 'Avg Guests per Booking' = DIVIDE ( [Total Guests], [Realized Bookings] )
+		formatString: #,0.0
+		displayFolder: 4 Guest behaviour
+		lineageTag: 1bfc0ce2-041b-432f-9a52-8d7db0a75649
+
+	measure 'Repeat Guest %' =
+			DIVIDE (
+			    CALCULATE ( [Total Bookings], fact_bookings[is_repeated_guest] = 1 ),
+			    [Total Bookings]
+			)
+		formatString: 0.0%
+		displayFolder: 4 Guest behaviour
+		lineageTag: b2253e79-f842-491e-ba19-99397b0b378c
+
+	measure 'Room Change Rate' =
+			DIVIDE (
+			    CALCULATE ( [Realized Bookings], fact_bookings[room_type_changed] = 1 ),
+			    [Realized Bookings]
+			)
+		formatString: 0.0%
+		displayFolder: 4 Guest behaviour
+		lineageTag: 7b05d7f7-2dca-4b88-9b19-bc6fa5222168
+
+	measure 'Avg Special Requests' = AVERAGE ( fact_bookings[total_special_requests] )
+		formatString: #,0.0
+		displayFolder: 4 Guest behaviour
+		lineageTag: 6779321a-8c3a-4b34-947a-bcf3e0806d28
+
+	measure 'Bookings by Booking Date' =
+			CALCULATE (
+			    [Total Bookings],
+			    USERELATIONSHIP ( fact_bookings[booking_date], dim_date[date] )
+			)
+		formatString: #,0
+		displayFolder: 5 Alternate dates
+		lineageTag: 01c50a73-dde7-4a02-a15f-143d165a41de
+
+	measure 'Cancellations by Cancel Date' =
+			CALCULATE (
+			    [Canceled Bookings],
+			    USERELATIONSHIP ( fact_bookings[status_date], dim_date[date] ),
+			    fact_bookings[reservation_status] = "Canceled"
+			)
+		formatString: #,0
+		displayFolder: 5 Alternate dates
+		lineageTag: 2141f135-e602-420e-afbc-52d3bc96e35d
+
+	measure 'Room Revenue Rolling 3M' =
+			CALCULATE (
+			    [Room Revenue],
+			    DATESINPERIOD ( dim_date[date], MAX ( dim_date[date] ), -3, MONTH )
+			)
+		formatString: \€#,0
+		displayFolder: 6 Time intelligence
+		lineageTag: a2f4913a-9cf1-4a0c-9007-caa8e3e48401
+
+	measure 'Room Revenue (Comparable)' =
+			VAR FirstData = CALCULATE ( MIN ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+			VAR LastData  = CALCULATE ( MAX ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+			VAR Periods =
+			    FILTER (
+			        VALUES ( dim_date[date] ),
+			        dim_date[date] >= EDATE ( FirstData, 12 ) && dim_date[date] <= LastData
+			    )
+			RETURN
+			    CALCULATE ( [Room Revenue], Periods )
+		formatString: \€#,0
+		displayFolder: 6 Time intelligence
+		lineageTag: 37c70dcd-7e91-4271-8eab-989401db871a
+
+	measure 'Room Revenue PY (Comparable)' =
+			VAR FirstData = CALCULATE ( MIN ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+			VAR LastData  = CALCULATE ( MAX ( fact_bookings[arrival_date] ), REMOVEFILTERS ( fact_bookings ) )
+			VAR Periods =
+			    FILTER (
+			        VALUES ( dim_date[date] ),
+			        dim_date[date] >= EDATE ( FirstData, 12 ) && dim_date[date] <= LastData
+			    )
+			RETURN
+			    CALCULATE ( [Room Revenue], SAMEPERIODLASTYEAR ( Periods ) )
+		formatString: \€#,0
+		displayFolder: 6 Time intelligence
+		lineageTag: 5a10a05e-4ab1-4236-ae93-91b813898b63
+
+	measure 'Room Revenue YoY %' = DIVIDE ( [Room Revenue (Comparable)] - [Room Revenue PY (Comparable)], [Room Revenue PY (Comparable)] )
+		formatString: 0.0%
+		displayFolder: 6 Time intelligence
+		lineageTag: 72a5e6df-3b2d-418a-aa56-1a5542d4e750
+
+	measure 'ADR PY' = CALCULATE ( [ADR], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+		formatString: \€#,0.00
+		displayFolder: 6 Time intelligence
+		lineageTag: f5e5f6cc-b422-4cd4-828d-4b8c5643145b
+
+	measure 'Cancellation Rate PY' = CALCULATE ( [Cancellation Rate], SAMEPERIODLASTYEAR ( dim_date[date] ) )
+		formatString: 0.0%
+		displayFolder: 6 Time intelligence
+		lineageTag: 0113ec60-1c49-4af0-8aaf-6242f957feae
+
+	measure 'Selected Hotel Label' =
+			IF (
+			    HASONEVALUE ( dim_hotel[hotel] ),
+			    VALUES ( dim_hotel[hotel] ),
+			    "Both hotels"
+			)
+		displayFolder: 7 Labels
+		lineageTag: 0098850f-10df-4fcd-b038-e53c3c9f0d0e
+
+	measure 'Report Subtitle' =
+			[Selected Hotel Label] & " | " & FORMAT ( [Total Bookings], "#,0" ) & " bookings | "
+			    & FORMAT ( [Cancellation Rate], "0.0%" ) & " canceled"
+		displayFolder: 7 Labels
+		lineageTag: 1902a097-5eef-48d3-b499-34ff43015ee4
+
+	column Placeholder
+		dataType: string
+		isHidden
+		lineageTag: c5933be2-8992-488d-94bf-ae38f5442c9e
+		summarizeBy: none
+		sourceColumn: Placeholder
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Placeholder = text], {})
+				in
+				    Source
+

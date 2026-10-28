@@ -1,0 +1,25 @@
+table dim_meal
+	lineageTag: 4006073a-9b82-4260-8eba-c1e3dd71dc0a
+
+	column meal_code
+		dataType: string
+		lineageTag: 2a5a5d97-36a0-406d-a4cc-2bc74a6c8054
+		summarizeBy: none
+		sourceColumn: meal_code
+
+	column meal_plan
+		dataType: string
+		lineageTag: 89f0562f-b1a3-436b-a936-ec2fbe1c044f
+		summarizeBy: none
+		sourceColumn: meal_plan
+
+	partition dim_meal = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_meal.csv"), [Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"meal_code", type text}, {"meal_plan", type text}}, "en-US")
+				in
+				    Typed
+

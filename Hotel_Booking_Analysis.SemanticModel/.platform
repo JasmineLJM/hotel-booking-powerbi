@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Hotel_Booking_Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "246b5315-2350-4156-82cf-bb31623c007d"
+  }
+}

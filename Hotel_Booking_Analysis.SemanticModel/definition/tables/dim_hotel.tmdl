@@ -1,0 +1,25 @@
+table dim_hotel
+	lineageTag: d29ffaec-0c0a-4b3f-a165-aaf2cf883ad0
+
+	column hotel
+		dataType: string
+		lineageTag: ed2125f6-5480-4e60-91e1-f86e2986e197
+		summarizeBy: none
+		sourceColumn: hotel
+
+	column location
+		dataType: string
+		lineageTag: f2a6fd01-0f0a-450a-937f-e87b19bc31bd
+		summarizeBy: none
+		sourceColumn: location
+
+	partition dim_hotel = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_hotel.csv"), [Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"hotel", type text}, {"location", type text}}, "en-US")
+				in
+				    Typed
+

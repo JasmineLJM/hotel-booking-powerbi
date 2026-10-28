@@ -1,0 +1,19 @@
+table dim_market_segment
+	lineageTag: d1c1f040-25dc-4f51-96de-b469e2e2d883
+
+	column market_segment
+		dataType: string
+		lineageTag: 971b51e8-f6e3-4c01-9dc0-5a6da924ca48
+		summarizeBy: none
+		sourceColumn: market_segment
+
+	partition dim_market_segment = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_market_segment.csv"), [Delimiter=",", Columns=1, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"market_segment", type text}}, "en-US")
+				in
+				    Typed
+

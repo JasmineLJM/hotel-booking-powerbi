@@ -1,0 +1,51 @@
+table dim_country
+	lineageTag: 80e3d765-abf3-4bab-8473-ddc3ef7695aa
+
+	column country_code
+		dataType: string
+		lineageTag: ce408f84-ce6e-427a-bacd-977938bc3f41
+		summarizeBy: none
+		sourceColumn: country_code
+
+	column country_name
+		dataType: string
+		lineageTag: 0090dede-b289-4005-992e-79d9044feb33
+		summarizeBy: none
+		sourceColumn: country_name
+
+	column continent
+		dataType: string
+		lineageTag: 9727976e-57b0-4b24-a14f-72125801231f
+		summarizeBy: none
+		sourceColumn: continent
+
+	column un_region
+		dataType: string
+		lineageTag: fe3d8367-37e7-4cd2-8046-11e38f9faf37
+		summarizeBy: none
+		sourceColumn: un_region
+
+	column is_domestic
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9cc55b18-cffc-4571-b014-1f786c05f375
+		summarizeBy: none
+		sourceColumn: is_domestic
+
+	column market
+		dataType: string
+		lineageTag: 88701490-c0bc-41ee-be68-95facff0fcb5
+		summarizeBy: none
+		sourceColumn: market
+
+	partition dim_country = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_country.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"country_code", type text}, {"country_name", type text}, {"continent", type text}, {"un_region", type text}, {"is_domestic", Int64.Type}, {"market", type text}}, "en-US")
+				in
+				    Typed
+

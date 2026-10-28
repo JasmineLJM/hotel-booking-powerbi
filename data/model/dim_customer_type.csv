@@ -1,0 +1,5 @@
+customer_type,description
+Contract,Booking under an allotment or contract
+Group,Booking that belongs to a group
+Transient,"Individual booking, not part of a group or contract"
+Transient-Party,"Transient, linked to another transient booking"
